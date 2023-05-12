@@ -1,0 +1,6 @@
+public class Lokasyon
+{
+    public string City { get; set; }
+    public string AirportCode { get; set; }
+    // Diğer lokasyon bilgileri
+}
