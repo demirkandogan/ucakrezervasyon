@@ -1,0 +1,26 @@
+public static class ReservationOperations
+{
+    public static void MakeReservation(Flight flight, Customer customer, int numberOfSeats)
+    {
+        if (flight.AvailableSeats >= numberOfSeats)
+        {
+            Reservation reservation = new Reservation
+            {
+                Flight = flight,
+                Customer = customer,
+                NumberOfSeats = numberOfSeats,
+                ReservationTime = DateTime.Now
+            };
+
+            FlightDatabase.UpdateFlightSeats(flight.FlightNumber, numberOfSeats);
+            Console.WriteLine("Rezervasyonunuz başarıyla tamamlandı.");
+            Console.WriteLine("Rezervasyon Detayları:");
+            Console.WriteLine($"Uçuş Numarası: {reservation.Flight.FlightNumber}");
+            Console.WriteLine($"Müşteri Adı: {reservation.Customer.Name}");
+            Console.WriteLine($"Koltuk Sayısı: {reservation.NumberOfSeats}");
+            Console.WriteLine($"Rezervasyon Zamanı: {reservation.ReservationTime}");
+        }
+        else
+        {
+            Console.WriteLine("Üzgünüz, seçtiğiniz uçuş için yeterli boş koltuk bulunmamaktadır)
+            } 
